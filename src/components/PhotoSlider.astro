@@ -1,0 +1,157 @@
+---
+const { images = [], altPrefix = "Project photo" } = Astro.props;
+const imagesJson = JSON.stringify(images);
+---
+
+<style>
+  .slider {
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.06);
+    border-radius: 18px;
+    padding: 14px;
+  }
+
+  /* Bigger viewport + always show full image */
+  .frame {
+    width: 100%;
+    min-height: 400px;
+    max-height: 700px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .frame img {
+    width: 100%;
+    height: auto;
+    max-height: 700px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .btn {
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.08);
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.92);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .count {
+    color: rgba(255,255,255,0.65);
+    font-size: 13px;
+  }
+
+  .dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.15);
+    cursor: pointer;
+  }
+  .dot[data-active="true"] {
+    background: rgba(255,255,255,0.75);
+  }
+
+  .controls{
+  display:flex;
+  justify-content:center;
+  margin-top: 12px;
+  }
+
+  @media (max-width: 820px) {
+    .frame { height: 360px; }
+  }
+</style>
+
+<div class="slider" data-slider data-images={imagesJson} data-altprefix={altPrefix}>
+  <div class="frame">
+    <img data-img src={images?.[0] ?? ""} alt={`${altPrefix} 1`} loading="lazy" />
+  </div>
+
+  <div class="controls">
+    <div class="count"><span data-index>1</span> / {images.length}</div>
+  </div>
+
+  <div class="dots">
+    {images.map((_, i) => (
+      <div class="dot" data-dot={i} data-active={i === 0 ? "true" : "false"}></div>
+    ))}
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll("[data-slider]").forEach((root) => {
+    const raw = root.getAttribute("data-images") || "[]";
+    const images = JSON.parse(raw);
+    const altPrefix = root.getAttribute("data-altprefix") || "Project photo";
+
+    const imgEl = root.querySelector("[data-img]");
+    const idxEl = root.querySelector("[data-index]");
+    const dots = Array.from(root.querySelectorAll("[data-dot]"));
+
+    if (!images.length || !imgEl || !idxEl) return;
+
+    let i = 0;
+    let timer = null;
+    const intervalMs = 3000;
+
+    function render() {
+      imgEl.src = images[i];
+      imgEl.alt = `${altPrefix} ${i + 1}`;
+      idxEl.textContent = String(i + 1);
+      dots.forEach((d, di) => (d.dataset.active = di === i ? "true" : "false"));
+    }
+
+    function startAuto() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(() => {
+        i = (i + 1) % images.length;
+        render();
+      }, intervalMs);
+    }
+
+    function stopAuto() {
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+
+    // click dots to jump
+    dots.forEach((d) =>
+      d.addEventListener("click", () => {
+        i = Number(d.dataset.dot);
+        render();
+        startAuto(); // keep autoplay after selecting
+      })
+    );
+
+    // pause on hover, resume on leave
+    root.addEventListener("mouseenter", stopAuto);
+    root.addEventListener("mouseleave", startAuto);
+
+    render();
+    startAuto();
+  });
+</script>
