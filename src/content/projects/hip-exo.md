@@ -1,6 +1,7 @@
 ---
 title: "Hip Exoskeleton — IMU Firmware & Bring-up"
 description: "A new open-source IMU driver so a hip exoskeleton could read its orientation sensor — written, tested, and debugged during hardware bring-up."
+image: ""
 ---
 
 ## The problem
