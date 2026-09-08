@@ -2,14 +2,13 @@
 title: "Desk Robot — Totoro Companion"
 oneLiner: "A self-driven build pushing myself from electronics into mechanical design, teaching myself CAD and 3D printing along the way."
 date: "Personal Project"
-image: "/projects/deskrobot_1.jpg"
+image: "/projects/telehealth_3.png"
 skills: ["CAD", "Fusion 360", "3D Printing", "Mechanical Design", "Electronics", "Prototyping"]
 highlights:
   - "Teaching myself Fusion 360 CAD from scratch to model and 3D-print the robot's body."
   - "Owning every design decision on how it looks, moves, and fits together."
   - "A deliberate step outside my comfort zone, from electronics into mechanical design."
 awards: []
-demo: ""
 photos: []
 ---
 
@@ -19,7 +18,7 @@ Most of my experience is on the electronics and sensing side, so I started this 
 
 ## What I'm Doing
 
-Teaching myself Fusion 360 CAD from scratch to model the robot's body, my first real mechanical design work, and 3D-printing the parts. I'm owning every design decision about how it looks, moves, and fits together, learning the tools as I go rather than waiting until I already knew them.
+Teaching myself Fusion 360 CAD from scratch to model the robot's body, my first real mechanical design work, and 3D-printing the parts. I'm owning every design decision about how it looks, moves, and fits together, learning the tools as I go.
 
 ## What I'm Learning
 
