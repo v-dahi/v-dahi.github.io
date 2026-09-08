@@ -1,18 +1,24 @@
 ---
 const name = "VAIDEHI GOHIL";
-const tagline = "Embedded – IoT – Systems";
+const tagline = "Embedded • Hardware • Test & Validation";
 const social = [
   { label: "GitHub", href: "https://github.com/v-dahi", icon: "github" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/vaidehigohil/", icon: "linkedin" },
-  { label: "Resume", href: "/Resume_Vaidehi.pdf", icon: "file" },
+  { label: "Resume", href: "/Resume_VaidehG.pdf", icon: "file" },
 ];
 // Projects: image LEFT, text RIGHT, button bottom-right
 const projects = [
   {
-    title: "FSAE: IIOT Based Digital Twin",
-    description: "A field-level encryption framework for Industrial IoT Digital Twin systems that protects sensitive telemetry without breaking real-time performance.",
-    image: "/projects/fsae_1.jpeg.webp",
-    href: "/projects/fsae-iiot-digital-twin",
+    title: "Hip Exoskeleton — IMU Firmware & Bring-up",
+    description: "A new open-source IMU driver for the moteus servo firmware so a hip exoskeleton could read its orientation sensor — written, tested, and debugged against live sensor data during hardware bring-up.",
+    image: "/projects/exo_1.jpg",
+    href: "/projects/hip-exo-imu-firmware",
+  },
+  {
+    title: "Desk Robot — Totoro Companion",
+    description: "A small desk robot I'm building from scratch to push myself from electronics into mechanical design — teaching myself Fusion 360 CAD to model and 3D-print the body.",
+    image: "/projects/deskrobot_1.jpg",
+    href: "/projects/desk-robot",
   },
   {
     title: "Telehealth: Connectivity to Wellness",
@@ -32,12 +38,30 @@ const projects = [
     image: "/projects/swds_1.jpg",
     href: "/projects/water-distribution-system",
   },
+  {
+    title: "FSAE: IIOT Based Digital Twin",
+    description: "A field-level encryption framework for Industrial IoT Digital Twin systems that protects sensitive telemetry without breaking real-time performance.",
+    image: "/projects/fsae_1.jpeg.webp",
+    href: "/projects/fsae-iiot-digital-twin",
+  },
 ];
 const experience = [
   {
+  role: "Graduate Research Assistant",
+  org: "Shepherd Lab (Wearable Robotics), Northeastern University",
+  dates: "Jun 2026 – Present",
+  location: "Boston, MA",
+  type: "Research",
+  skills: ["Embedded Firmware", "IMU / MPU6050", "moteus", "Hardware Bring-up", "Battery Packs", "Open Source"],
+  bullets: [
+    "Wrote a new IMU driver for the open-source moteus servo firmware so a hip exoskeleton could read its MPU6050 IMU, which the existing firmware did not support; tested and debugged it against live sensor output and contributed it back as open source.",
+    "Building custom battery packs for a back exoskeleton and integrating the same IMU firmware across the back and hip exos.",
+  ],
+},
+  {
     role: "Graduate Research Assistant",
     org: "Mon(IoT)r Lab, Northeastern University",
-    dates: "2026 – Present",
+    dates: "Mar 2026 – JUL 2026",
     location: "Boston, MA",
     type: "Volunteering",
     skills: ["IoT", "SPHERE Testbed", "Research"],
